@@ -208,6 +208,9 @@ fn build_registry(input: &ItemTrait) -> TokenStream {
                     std::collections::btree_map::Entry::Vacant(entry) => {
                         entry.insert(std::option::Option::Some(registered.deserializer));
                     }
+                    std::collections::btree_map::Entry::Occupied(mut entry) => {
+                        ();
+                    }
                 }
                 registry.names.push(registered.name);
                 registry.names.sort_unstable();
